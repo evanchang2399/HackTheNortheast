@@ -122,118 +122,117 @@ public class HomeActivity extends AppCompatActivity {
                 forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/" + latitude + "," + longitude;
                 //forecastURL = "https://api.myjson.com/bins/kp9wz";
                 Log.i("URL", forecastURL);
-            }
-        });
-        forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/39.0840,-77.1528";
-
-        jResponse = "empty";
-
-        OkHttpClient client = new OkHttpClient.Builder().build();
-        Log.i("event", forecastURL);
-        Request request = new Request.Builder()
-                .url(forecastURL)
-                .build();
 
 
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
+                //forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/39.0840,-77.1528";
+
+                jResponse = "empty";
+
+                OkHttpClient client = new OkHttpClient.Builder().build();
+                Log.i("event", forecastURL);
+                Request request = new Request.Builder()
+                        .url(forecastURL)
+                        .build();
 
 
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.i("event", "Failure");
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.i("event", "on response");
-                if (response.isSuccessful()) {
-                    //obj = response.getJsonObject("currently");
-                    jResponse = response.body().string();
-                    Log.i("event", "Received JSON");
-                } else {
-                    Log.i("event", "Something went wrong");
-                }
+                Call call = client.newCall(request);
+                call.enqueue(new Callback() {
 
 
-                try {
-                    JSONObject jobj = new JSONObject(jResponse);
-                    currently = jobj.getJSONObject("currently");
-                    String temp = currently.getString("temperature");
-                    String humidity = currently.getString("humidity");
-                    String windSpeed = currently.getString("windSpeed");
-                    String precipitation = currently.getString("precipProbability");
-
-
-                    currentInfo = "Current Temp: " + temp + ", current humidty: " + humidity + ", current wind speed: " + windSpeed;
-                    currentInfo += ", current precipation chance: " + precipitation;
-
-
-
-                    //Get hourly
-                    JSONArray hourlyData = null;
-                    try {
-                        hourly = jobj.getJSONObject("hourly");
-                        hourlyData = hourly.getJSONArray("data");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    hourTemps = new String[24];
-                    hourPrecips = new String[24];
-                    hourUVs = new String[24];
-                    hourWinds = new String[24];
-                    hourHumidities = new String[24];
-
-                    for (int i = 0; i < 24; i++) {
-                        try {
-                            JSONObject curHour = hourlyData.getJSONObject(i);
-                            hourTemps[i] = curHour.getString("temperature");
-                            hourPrecips[i] = curHour.getString("precipProbability");
-                            hourUVs[i] = curHour.getString("uvIndex");
-                            hourWinds[i] = curHour.getString("windSpeed");
-                            hourHumidities[i] = curHour.getString("humidity");
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-
-                    //Start getting averages over next week
-                    JSONArray dailyData = null;
-                    try {
-                        nextWeek = jobj.getJSONObject("daily");
-                        dailyData = nextWeek.getJSONArray("data");
-                    } catch (JSONException e) {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("event", "Failure");
                         e.printStackTrace();
                     }
 
-                    dailyHighs = new String[7];
-                    dailyHighTimes = new String[7];
-                    dailyLows = new String[7];
-                    dailyLowTimes = new String[7];
-                    dailyHumidities = new String[7];
-                    dailyPrecip = new String[7];
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        Log.i("event", "on response");
+                        if (response.isSuccessful()) {
+                            //obj = response.getJsonObject("currently");
+                            jResponse = response.body().string();
+                            Log.i("event", "Received JSON");
+                        } else {
+                            Log.i("event", "Something went wrong");
+                        }
 
-                    for (int i = 0; i < 7; i++) {
+
                         try {
-                            JSONObject curDaily = dailyData.getJSONObject(i);
-                            dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
-                            dailyHighTimes[i] = curDaily.getString("temperatureHighTime");
-                            dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
+                            JSONObject jobj = new JSONObject(jResponse);
+                            currently = jobj.getJSONObject("currently");
+                            String temp = currently.getString("temperature");
+                            String humidity = currently.getString("humidity");
+                            String windSpeed = currently.getString("windSpeed");
+                            String precipitation = currently.getString("precipProbability");
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    HomeActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            testBox.setText(currentInfo);
-                        }
-                    });
+                            currentInfo = "Current Temp: " + temp + ", current humidty: " + humidity + ", current wind speed: " + windSpeed;
+                            currentInfo += ", current precipation chance: " + precipitation;
+
+
+                            //Get hourly
+                            JSONArray hourlyData = null;
+                            try {
+                                hourly = jobj.getJSONObject("hourly");
+                                hourlyData = hourly.getJSONArray("data");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            hourTemps = new String[24];
+                            hourPrecips = new String[24];
+                            hourUVs = new String[24];
+                            hourWinds = new String[24];
+                            hourHumidities = new String[24];
+
+                            for (int i = 0; i < 24; i++) {
+                                try {
+                                    JSONObject curHour = hourlyData.getJSONObject(i);
+                                    hourTemps[i] = curHour.getString("temperature");
+                                    hourPrecips[i] = curHour.getString("precipProbability");
+                                    hourUVs[i] = curHour.getString("uvIndex");
+                                    hourWinds[i] = curHour.getString("windSpeed");
+                                    hourHumidities[i] = curHour.getString("humidity");
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+
+                            //Start getting averages over next week
+                            JSONArray dailyData = null;
+                            try {
+                                nextWeek = jobj.getJSONObject("daily");
+                                dailyData = nextWeek.getJSONArray("data");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            dailyHighs = new String[7];
+                            dailyHighTimes = new String[7];
+                            dailyLows = new String[7];
+                            dailyLowTimes = new String[7];
+                            dailyHumidities = new String[7];
+                            dailyPrecip = new String[7];
+
+                            for (int i = 0; i < 7; i++) {
+                                try {
+                                    JSONObject curDaily = dailyData.getJSONObject(i);
+                                    dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
+                                    dailyHighTimes[i] = curDaily.getString("temperatureHighTime");
+                                    dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
+
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            HomeActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    testBox.setText(currentInfo);
+                                }
+                            });
                     /*
 
 
@@ -270,13 +269,14 @@ public class HomeActivity extends AppCompatActivity {
                     });
 */
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.i("Error", "nope didnt work");
-                }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.i("Error", "nope didnt work");
+                        }
+                    }
+                });
             }
         });
-
     }
 
     private void moveToOmarActivity(){
