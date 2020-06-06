@@ -48,8 +48,9 @@ public class ScheduleActivity extends AppCompatActivity {
     Double temp;
     String humidity;
     String currentInfo;
-    String[] hourTemps, hourUVs, hourHumidities, hourPrecips, hourWinds, dailyHighs, dailyLows, dailyPrecip;
+    String[] hourTemps, hourHumidities, hourPrecips, hourWinds, dailyHighs, dailyLows, dailyPrecip;
     String[] dailyHumidities, dailyHighTimes, dailyLowTimes;
+    int[] hourTimes, hourUVs;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
 
@@ -184,26 +185,33 @@ public class ScheduleActivity extends AppCompatActivity {
                             }
                             hourTemps = new String[24];
                             hourPrecips = new String[24];
-                            hourUVs = new String[24];
+                            hourUVs = new int[24];
                             hourWinds = new String[24];
                             hourHumidities = new String[24];
+                            hourTimes = new int[24];
+
 
                             for (int i = 0; i < 24; i++) {
                                 try {
                                     JSONObject curHour = hourlyData.getJSONObject(i);
                                     hourTemps[i] = curHour.getString("temperature");
                                     hourPrecips[i] = curHour.getString("precipProbability");
-                                    hourUVs[i] = curHour.getString("uvIndex");
+                                    hourUVs[i] = Integer.parseInt(curHour.getString("uvIndex"));
                                     hourWinds[i] = curHour.getString("windSpeed");
                                     hourHumidities[i] = curHour.getString("humidity");
-
+                                    hourTimes[i] = convertToHour(curHour.getString("time"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
 
+                            for(int i = 0; i < 24; i ++){
+                                double curHourTemp = Double.parseDouble(hourTemps[i]);
+                                if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh){
+                                    arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV index of " + hourUVs+", with a " + hourPrecips.toString()+ " chance of precipitation");
+                                }
+                            }
 
-                            //Start getting averages over next week
                             JSONArray dailyData = null;
                             try {
                                 nextWeek = jobj.getJSONObject("daily");
@@ -237,7 +245,10 @@ public class ScheduleActivity extends AppCompatActivity {
                             ScheduleActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    testBox.setText(currentInfo);
+                                    // next thing you have to do is check if your adapter has changed
+                                    adapter.notifyDataSetChanged();
+                                    adapter.notifyDataSetChanged();
+
                                 }
                             });} catch (JSONException e) {
                             e.printStackTrace();
