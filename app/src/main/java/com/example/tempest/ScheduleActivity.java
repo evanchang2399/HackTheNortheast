@@ -209,6 +209,7 @@ public class ScheduleActivity extends AppCompatActivity {
                                 double curHourTemp = Double.parseDouble(hourTemps[i]);
                                 if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh){
                                     arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV index of " + hourUVs+", with a " + hourPrecips.toString()+ " chance of precipitation");
+
                                 }
                             }
 
@@ -246,13 +247,13 @@ public class ScheduleActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     // next thing you have to do is check if your adapter has changed
+                                    adapter.addAll(arrayList);
                                     adapter.notifyDataSetChanged();
-                                    adapter.notifyDataSetChanged();
+                                    //adapter.notifyDataSetChanged();
 
                                 }
                             });} catch (JSONException e) {
                             e.printStackTrace();
-                            Log.i("Error", "nope didnt work");
                         }
                     }
                 });
