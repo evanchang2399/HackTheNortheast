@@ -79,11 +79,18 @@ public class HomeActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                userTempLow = Integer.valueOf(inputTempLow.getText().toString());
-                userTempHigh = Integer.valueOf(inputTempHigh.getText().toString());
-                Toast.makeText(HomeActivity.this, String.valueOf(userTempLow), Toast.LENGTH_SHORT).show();
-                Toast.makeText(HomeActivity.this, String.valueOf(userTempHigh), Toast.LENGTH_SHORT).show();
-                moveToOmarActivity(); //Method at the bottom of all the Evan stuff
+                try {
+                  userTempLow = Integer.valueOf(inputTempLow.getText().toString());
+                  userTempHigh = Integer.valueOf(inputTempHigh.getText().toString());
+                  moveToScheduleActivity(); //Method at the bottom of all the Evan stuff
+                }
+                catch(NumberFormatException en) {
+                    Toast.makeText(HomeActivity.this, "Please fill out your preferences", Toast.LENGTH_SHORT).show();
+                }
+                catch(Exception e){
+                    Toast.makeText(HomeActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -269,19 +276,15 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     });
 */
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.i("Error", "nope didnt work");
                 }
             }
         });
-
     }
-
-    private void moveToOmarActivity(){
-        //Change "MainActivity.class" to what ever activity class omar makes
-        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+    private void moveToScheduleActivity(){
+        Intent intent = new Intent(HomeActivity.this, ScheduleActivity.class);
         startActivity(intent);
     }
 
