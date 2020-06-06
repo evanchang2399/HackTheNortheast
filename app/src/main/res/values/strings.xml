@@ -9,6 +9,9 @@
     <string name="low_temp">Lowest Temperature</string>
     <string name="hint_low">Low</string>
 
+    <string name="message_one">Run Today</string>
+    <string name="message_two">Dont Run Today</string>
+    <string name="message_three">Maybe Run Today</string>
     <string name="current_temp">10 Degrees</string>
     <string name="current_humidity">10%</string>
     <string name="current_precipitation">10%</string>

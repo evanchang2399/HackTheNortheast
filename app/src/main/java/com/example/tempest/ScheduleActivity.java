@@ -63,7 +63,7 @@ public class ScheduleActivity extends AppCompatActivity {
         final TextView weeklyAve;
         final TextView oldDate;
         final TextView testBox;
-        testBox = findViewById(R.id.textView12);
+        testBox = findViewById(R.id.message1);
         /*oldDate = findViewById(R.id.oldTemp);
         weeklyAve = findViewById(R.id.dailyAve);
         averages = findViewById(R.id.averages);
