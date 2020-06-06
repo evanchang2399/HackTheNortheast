@@ -2,10 +2,13 @@ package com.example.tempest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +35,7 @@ import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
     double userTempLow ,userTempHigh;
-
+    Button goBackButton;
     //Evan stuff \/
     Double latitude;
     Double longitude;
@@ -64,13 +67,22 @@ public class ScheduleActivity extends AppCompatActivity {
                 userTempLow = Double.parseDouble(extras.get("tempLowKey").toString());
                 userTempHigh = Double.parseDouble(extras.get("tempHighKey").toString());
                 //Test
-                Toast.makeText(ScheduleActivity.this, "Low: "+String.valueOf(userTempLow), Toast.LENGTH_SHORT).show();
-                Toast.makeText(ScheduleActivity.this, "High: "+String.valueOf(userTempHigh), Toast.LENGTH_SHORT).show();
             }
         }catch(Exception e){
             Toast.makeText(ScheduleActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
-
+        goBackButton = (Button) findViewById(R.id.goBackBtn);
+        goBackButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                try {
+                    moveToHomeActivity(); //Method at the bottom of all the Evan stuff
+                }
+                catch(Exception e){
+                    Toast.makeText(ScheduleActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -245,5 +257,10 @@ public class ScheduleActivity extends AppCompatActivity {
         Log.i("TIME", formattedTime);
         String hour = formattedTime.substring(11,13);
         return Integer.parseInt(hour);
+    }
+
+    private void moveToHomeActivity() {
+        Intent intent = new Intent(ScheduleActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

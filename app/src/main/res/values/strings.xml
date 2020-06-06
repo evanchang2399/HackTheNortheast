@@ -8,6 +8,7 @@
     <string name="hint_high">High</string>
     <string name="low_temp">Lowest Temperature</string>
     <string name="hint_low">Low</string>
+    <string name="go_back">Edit Preferences</string>
 
     <string name="message_one">Run Today</string>
     <string name="message_two">Dont Run Today</string>
