@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +47,8 @@ public class ScheduleActivity extends AppCompatActivity {
     String currentInfo;
     String[] hourTemps, hourUVs, hourHumidities, hourPrecips, hourWinds, dailyHighs, dailyLows, dailyPrecip;
     String[] dailyHumidities, dailyHighTimes, dailyLowTimes;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> arrayList;
 
     JSONObject nextWeek;
 
@@ -76,7 +80,16 @@ public class ScheduleActivity extends AppCompatActivity {
         final TextView weeklyAve;
         final TextView oldDate;
         final TextView testBox;
+        final ListView dailyList;
+
         testBox = findViewById(R.id.message1);
+        dailyList = findViewById(R.id.dailyList);
+
+        arrayList = new ArrayList<String>();
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
+
+        dailyList.setAdapter(adapter);
+
         /*oldDate = findViewById(R.id.oldTemp);
         weeklyAve = findViewById(R.id.dailyAve);
         averages = findViewById(R.id.averages);
