@@ -62,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
         final TextView averages;
         final TextView weeklyAve;
         final TextView oldDate;
-        oldDate = findViewById(R.id.oldTemp);
+        /*oldDate = findViewById(R.id.oldTemp);
         weeklyAve = findViewById(R.id.dailyAve);
         averages = findViewById(R.id.averages);
         jsonTextView = findViewById(R.id.text_result);
         hourlyTemps = findViewById(R.id.hourly);
+        */
         Log.i("TEST", "ABOUT TO GET LOCATION");
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
