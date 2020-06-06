@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Tempest</string>
     <string name="action_settings">Settings</string>
+    <string name="welcome_text">Welcome to Tempest</string>
+    <string name="home_description">The exercise app used schedule your next workout or run!</string>
+    <string name="app_description1">Exercise Preferences</string>
+    <string name="max_temp">Max Temperature</string>
+    <string name="hint_high">High</string>
+    <string name="low_temp">Lowest Temperature</string>
+    <string name="hint_low">Low</string>
+
 </resources>

@@ -12,34 +12,39 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="63dp"
             android:text="RUN!"
+            android:textColor="@color/colorGradient5"
+            android:background="@color/colorGradient4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+            app:layout_constraintTop_toBottomOf="@+id/inputTempLow" />
 
         <EditText
-            android:id="@+id/editTextNumber2"
+            android:id="@+id/inputTempLow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="46dp"
+            android:layout_marginEnd="99dp"
             android:ems="10"
-            android:hint="Low"
+            android:hint="@string/hint_low"
             android:inputType="number"
-            app:layout_constraintStart_toStartOf="@+id/editTextNumber"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+            android:textColor="@color/colorGradient5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputTempHigh" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/inputTempHigh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="212dp"
             android:ems="10"
-            android:hint="High"
+            android:hint="@string/hint_high"
             android:inputType="number"
+            android:textColor="@color/colorGradient5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,19 +53,24 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="180dp"
             android:layout_marginBottom="8dp"
-            android:text="Lowest Temperature"
-            app:layout_constraintBottom_toTopOf="@+id/editTextNumber2"
-            app:layout_constraintStart_toStartOf="@+id/editTextNumber2" />
+            android:text="@string/low_temp"
+            android:textColor="@color/colorGradient5"
+            app:layout_constraintBottom_toTopOf="@+id/inputTempLow"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="200dp"
             android:layout_marginBottom="11dp"
-            android:text="Max Temperature"
-            app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
-            app:layout_constraintStart_toStartOf="@+id/editTextNumber" />
+            android:text="@string/max_temp"
+            android:textColor="@color/colorGradient5"
+            app:layout_constraintBottom_toTopOf="@+id/inputTempHigh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/inputTempHigh" />
 
         <TextView
             android:id="@+id/textView3"
@@ -68,8 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="69dp"
             android:layout_marginEnd="55dp"
-            android:text="Exercise Preferences"
+            android:text="@string/app_description1"
             android:textSize="30sp"
+            android:textColor="@color/colorGradient5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
