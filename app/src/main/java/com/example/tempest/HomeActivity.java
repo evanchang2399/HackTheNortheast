@@ -83,6 +83,7 @@ public class HomeActivity extends AppCompatActivity {
                 userTempHigh = Integer.valueOf(inputTempHigh.getText().toString());
                 Toast.makeText(HomeActivity.this, String.valueOf(userTempLow), Toast.LENGTH_SHORT).show();
                 Toast.makeText(HomeActivity.this, String.valueOf(userTempHigh), Toast.LENGTH_SHORT).show();
+                moveToOmarActivity(); //Method at the bottom of all the Evan stuff
             }
         });
 
@@ -276,6 +277,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void moveToOmarActivity(){
+        //Change "MainActivity.class" to what ever activity class omar makes
+        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 
