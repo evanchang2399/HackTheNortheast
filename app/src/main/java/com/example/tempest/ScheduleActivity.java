@@ -16,6 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -25,8 +28,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
-    int userTempLow = Integer.parseInt(getIntent().getStringExtra("userTempLow"));
-    int userTempHigh= Integer.parseInt(getIntent().getStringExtra("userTempHigh"));
+//    int userTempLow = Integer.parseInt(getIntent().getStringExtra("userTempLow"));
+//    int userTempHigh= Integer.parseInt(getIntent().getStringExtra("userTempHigh"));
 
     //Evan stuff \/
     Double latitude;
@@ -183,13 +186,16 @@ public class ScheduleActivity extends AppCompatActivity {
                                     JSONObject curDaily = dailyData.getJSONObject(i);
                                     dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
                                     dailyHighTimes[i] = curDaily.getString("temperatureHighTime");
-                                    dailyHighs[i] = curDaily.getString("apparentTemperatureHigh");
-
+                                    dailyLowTimes[i] = curDaily.getString("temperatureLowTime");
+                                    dailyLows[i] = curDaily.getString("apparentTemperatureLow");
+                                    dailyHumidities[i] = curDaily.getString("humidity");
+                                    dailyPrecip[i] = curDaily.getString("precipProbability");
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
+                            convertToHour(dailyHighTimes[0]);
                             ScheduleActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -203,5 +209,15 @@ public class ScheduleActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private int convertToHour(String unixTime){
+        long unix = Long.parseLong(unixTime);
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedTime = Instant.ofEpochSecond(unix).atZone(ZoneId.of("EST")).format(formatter);
+        System.out.println(formattedTime);
+        Log.i("TIME", formattedTime);
+        String hour = formattedTime.substring(11,13);
+        return Integer.parseInt(hour);
     }
 }
