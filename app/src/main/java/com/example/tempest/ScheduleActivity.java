@@ -25,6 +25,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
+    int userTempLow = Integer.parseInt(getIntent().getStringExtra("userTempLow"));
+    int userTempHigh= Integer.parseInt(getIntent().getStringExtra("userTempHigh"));
 
     //Evan stuff \/
     Double latitude;

@@ -286,6 +286,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private void moveToScheduleActivity(){
         Intent intent = new Intent(HomeActivity.this, ScheduleActivity.class);
+        intent.putExtra("userTempLow", userTempLow);
+        intent.putExtra("userTempHigh", userTempHigh);
         startActivity(intent);
     }
 
