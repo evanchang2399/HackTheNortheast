@@ -4,10 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorGradient1">#eae2b7</color>
-    <color name="colorGradient2">#fcbf49</color>
-    <color name="colorGradient3">#f77f00</color>
-    <color name="colorGradient4">#d62828</color>
-    <color name="colorGradient5">#003049</color>
+    <color name="colorGradient1">#ef476f</color>
+    <color name="colorGradient2">#ffd166</color>
+    <color name="colorGradient3">#06d6a0</color>
+    <color name="colorGradient4">#118ab2</color>
+    <color name="colorGradient5">#073b4c</color>
 
 </resources>
