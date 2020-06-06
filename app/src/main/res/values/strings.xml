@@ -9,4 +9,15 @@
     <string name="low_temp">Lowest Temperature</string>
     <string name="hint_low">Low</string>
 
+    <string name="current_temp">10 Degrees</string>
+    <string name="current_humidity">10%</string>
+    <string name="current_precipitation">10%</string>
+    <string name="day_one">Day One</string>
+    <string name="day_two">Day Two</string>
+    <string name="day_three">Day Three</string>
+    <string name="day_four">Day Four</string>
+    <string name="day_five">Day Five</string>
+    <string name="day_six">Day Six</string>
+    <string name="day_seven">Day Seven</string>
+
 </resources>
