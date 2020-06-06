@@ -284,12 +284,10 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void moveToScheduleActivity(){
+    private void moveToScheduleActivity() {
         Intent intent = new Intent(HomeActivity.this, ScheduleActivity.class);
-        intent.putExtra("userTempLow", userTempLow);
-        intent.putExtra("userTempHigh", userTempHigh);
+        intent.putExtra("tempLowKey", userTempLow);
+        intent.putExtra("tempHighKey", userTempHigh);
         startActivity(intent);
     }
-
-
 }

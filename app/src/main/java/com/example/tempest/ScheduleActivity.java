@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -28,8 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
-//    int userTempLow = Integer.parseInt(getIntent().getStringExtra("userTempLow"));
-//    int userTempHigh= Integer.parseInt(getIntent().getStringExtra("userTempHigh"));
+    double userTempLow ,userTempHigh;
 
     //Evan stuff \/
     Double latitude;
@@ -54,6 +54,19 @@ public class ScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+        try {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                userTempLow = Double.parseDouble(extras.get("tempLowKey").toString());
+                userTempHigh = Double.parseDouble(extras.get("tempHighKey").toString());
+                //Test
+                Toast.makeText(ScheduleActivity.this, "Low: "+String.valueOf(userTempLow), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScheduleActivity.this, "High: "+String.valueOf(userTempHigh), Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            Toast.makeText(ScheduleActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
