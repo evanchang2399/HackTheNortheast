@@ -42,18 +42,16 @@ public class ScheduleActivity extends AppCompatActivity {
     Double longitude;
     String jResponse;
     String forecastURL;
-    String pastForecastURL;
     JSONObject currently;
     JSONObject hourly;
-    JSONObject daily;
-    Double temp;
-    String humidity;
+
     String currentInfo;
     String[] hourTemps, hourHumidities, hourPrecips, hourWinds, dailyHighs, dailyLows, dailyPrecip;
     String[] dailyHumidities, dailyHighTimes, dailyLowTimes;
     int[] hourTimes, hourUVs;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
+    private ArrayList<Integer> indexes;
 
     JSONObject nextWeek;
 
@@ -97,11 +95,13 @@ public class ScheduleActivity extends AppCompatActivity {
         final TextView dayFiveInfo;
         final TextView daySixInfo;
         final TextView daySevenInfo;
+        final TextView todayInfo;
 
         final ListView dailyList;
 
         dailyList = findViewById(R.id.dailyList);
 
+        todayInfo = findViewById(R.id.todayInfo);
         dayOneInfo = findViewById(R.id.dayOneInfo);
         dayTwoInfo = findViewById(R.id.dayTwoInfo);
         dayThreeInfo = findViewById(R.id.dayThreeInfo);
@@ -112,7 +112,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
         arrayList = new ArrayList<String>();
-//        arrayList.add(testboc);
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
 
         dailyList.setAdapter(adapter);
@@ -180,9 +179,6 @@ public class ScheduleActivity extends AppCompatActivity {
                             String precipitation = currently.getString("precipProbability");
 
 
-                            currentInfo = "Current Temp: " + temp + ", current humidty: " + humidity + ", current wind speed: " + windSpeed;
-                            currentInfo += ", current precipation chance: " + precipitation;
-
 
                             //Get hourly
                             JSONArray hourlyData = null;
@@ -214,11 +210,12 @@ public class ScheduleActivity extends AppCompatActivity {
                                 }
                             }
 
+                            indexes = new ArrayList<Integer>();
                             for(int i = 0; i < 24; i ++){
                                 double curHourTemp = Double.parseDouble(hourTemps[i]);
                                 if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh && (hourTimes[i]>5 && hourTimes[i]<21)){
                                     arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV: " + hourUVs[i]+", precip chance: " + hourPrecips[i].toString());
-
+                                    indexes.add(i);
                                 }
                             }
 
@@ -258,34 +255,104 @@ public class ScheduleActivity extends AppCompatActivity {
                                     // next thing you have to do is check if your adapter has changed
                                     adapter.addAll(arrayList);
                                     adapter.notifyDataSetChanged();
-                                    String text ="High of "+ dailyHighs[0] + " at "+convertToHour(dailyHighTimes[0])+":00, Low: " + dailyLows[0]+" at " +convertToHour(dailyLowTimes[0])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[0] +" and a humidity of " + dailyHumidities[0];
+                                    String text = "High of " + dailyHighs[0] + " at " + convertToHour(dailyHighTimes[0]) + ":00, Low: " + dailyLows[0] + " at " + convertToHour(dailyLowTimes[0]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[0] + " and a humidity of " + dailyHumidities[0];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[0]) && userTempHigh>Double.parseDouble(dailyLows[0])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }
                                     dayOneInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[1] + " at "+convertToHour(dailyHighTimes[1])+":00, Low: " + dailyLows[1]+" at " +convertToHour(dailyLowTimes[1])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[1] +" and a humidity of " + dailyHumidities[1];
+                                    text = "High of " + dailyHighs[1] + " at " + convertToHour(dailyHighTimes[1]) + ":00, Low: " + dailyLows[1] + " at " + convertToHour(dailyLowTimes[1]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[1] + " and a humidity of " + dailyHumidities[1];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[1]) && userTempHigh>Double.parseDouble(dailyLows[1])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }
                                     dayTwoInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[2] + " at "+convertToHour(dailyHighTimes[2])+":00, Low: " + dailyLows[2]+" at " +convertToHour(dailyLowTimes[2])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[2] +" and a humidity of " + dailyHumidities[2];
+                                    text = "High of " + dailyHighs[2] + " at " + convertToHour(dailyHighTimes[2]) + ":00, Low: " + dailyLows[2] + " at " + convertToHour(dailyLowTimes[2]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[2] + " and a humidity of " + dailyHumidities[2];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[2]) && userTempHigh>Double.parseDouble(dailyLows[2])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }
                                     dayThreeInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[3] + " at "+convertToHour(dailyHighTimes[3])+":00, Low: " + dailyLows[3]+" at " +convertToHour(dailyLowTimes[3])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[3] +" and a humidity of " + dailyHumidities[3];
-                                    dayFourInfo.setText(text);
+                                    text = "High of " + dailyHighs[3] + " at " + convertToHour(dailyHighTimes[3]) + ":00, Low: " + dailyLows[3] + " at " + convertToHour(dailyLowTimes[3]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[3] + " and a humidity of " + dailyHumidities[3];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[3]) && userTempHigh>Double.parseDouble(dailyLows[3])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }dayFourInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[4] + " at "+convertToHour(dailyHighTimes[4])+":00, Low: " + dailyLows[4]+" at " +convertToHour(dailyLowTimes[4])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[4] +" and a humidity of " + dailyHumidities[4];
-                                    dayFiveInfo.setText(text);
+                                    text = "High of " + dailyHighs[4] + " at " + convertToHour(dailyHighTimes[4]) + ":00, Low: " + dailyLows[4] + " at " + convertToHour(dailyLowTimes[4]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[4] + " and a humidity of " + dailyHumidities[4];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[4]) && userTempHigh>Double.parseDouble(dailyLows[4])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }dayFiveInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[5] + " at "+convertToHour(dailyHighTimes[5])+":00, Low: " + dailyLows[5]+" at " +convertToHour(dailyLowTimes[5])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[5] +" and a humidity of " + dailyHumidities[5];
-                                    daySixInfo.setText(text);
+                                    text = "High of " + dailyHighs[5] + " at " + convertToHour(dailyHighTimes[5]) + ":00, Low: " + dailyLows[5] + " at " + convertToHour(dailyLowTimes[5]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[5] + " and a humidity of " + dailyHumidities[5];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[5]) && userTempHigh>Double.parseDouble(dailyLows[5])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout for this day.";
+                                    }daySixInfo.setText(text);
 
-                                    text ="High of "+ dailyHighs[6] + " at "+convertToHour(dailyHighTimes[6])+":00, Low: " + dailyLows[6]+" at " +convertToHour(dailyLowTimes[6])+":00. ";
-                                    text += "Precipitation chance of " + dailyPrecip[6] +" and a humidity of " + dailyHumidities[6];
-                                    daySevenInfo.setText(text);
+                                    text = "High of " + dailyHighs[6] + " at " + convertToHour(dailyHighTimes[6]) + ":00, Low: " + dailyLows[6] + " at " + convertToHour(dailyLowTimes[6]) + ":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[6] + " and a humidity of " + dailyHumidities[6];
+                                    if(userTempLow<Double.parseDouble(dailyHighs[6]) && userTempHigh>Double.parseDouble(dailyLows[6])){
+                                        text+=". A good day for the outdoors!";
+                                    }
+                                    else{
+                                        text+=". We recommend you try an indoor workout today.";
+                                    }daySevenInfo.setText(text);
 
+                                    boolean set = false;
+                                    for (int j = 0; j < indexes.size(); j++) {
+                                        int i = indexes.get(j);
+                                        if (userPrefTime == -1) {
+                                            if (hourTimes[i] < 12) {
+                                                todayInfo.setText("We recommend you run at " + hourTimes[i] + ":00. It'll be " + hourTemps[i] + " degrees, UV of " + hourUVs[i] + ", with precip chance of " + hourPrecips[i].toString());
+                                                j = indexes.size();
+                                                set = true;
+                                            }
+                                        } else if (userPrefTime == 1) {
+                                            if (hourTimes[i] > 12 && hourTimes[i] <16) {
+                                                todayInfo.setText("We recommend you run at " + hourTimes[i] + ":00. It'll be " + hourTemps[i] + " degrees, UV of " + hourUVs[i] + ", with precip chance of " + hourPrecips[i].toString());
+                                                j = indexes.size();
+                                                set = true;
+                                            }
+                                        }
+                                        else if (userPrefTime == 2) {
+                                            if (hourTimes[i] > 16) {
+                                                todayInfo.setText("We recommend you run at " + hourTimes[i] + ":00. It'll be " + hourTemps[i] + " degrees, UV of " + hourUVs[i] + ", with precip chance of " + hourPrecips[i].toString());
+                                                j = indexes.size();
+                                                set = true;
+                                            }
+                                        }
+                                        else{
+                                            todayInfo.setText("We recommend you run at " + hourTimes[i] + ":00. It'll be " + hourTemps[i] + " degrees, UV of " + hourUVs[i] + ", with precip chance of " + hourPrecips[i].toString());
+                                            j = indexes.size();
+                                            set = true;
+                                        }
+                                    }
+                                    if(!set){
+                                        todayInfo.setText("Sorry, we can't find a time to run today to fit your preferences, maybe try an indoor workout today or change your preferences!");
+                                    }
                                 }
                             });} catch (JSONException e) {
                             e.printStackTrace();

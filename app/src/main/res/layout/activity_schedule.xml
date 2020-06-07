@@ -130,6 +130,17 @@
 
                 />
 -->
+
+            <TextView
+                android:id="@+id/todayInfo"
+                android:layout_width="349dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:layout_gravity="center"
+                android:textColor="@color/colorGradient5"
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/dayOne"
                 android:layout_width="wrap_content"
@@ -205,7 +216,7 @@
                 android:id="@+id/dayThreeInfo"
                 android:layout_width="349dp"
                 android:layout_height="51dp"
-                android:layout_marginLeft="100dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
                 android:textColor="@color/colorGradient5"
