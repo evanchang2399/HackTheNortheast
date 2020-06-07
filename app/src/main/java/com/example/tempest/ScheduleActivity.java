@@ -111,16 +111,16 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
         arrayList = new ArrayList<String>();
+//        arrayList.add(testboc);
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
 
         dailyList.setAdapter(adapter);
 
-        /*oldDate = findViewById(R.id.oldTemp);
-        weeklyAve = findViewById(R.id.dailyAve);
-        averages = findViewById(R.id.averages);
-        jsonTextView = findViewById(R.id.text_result);
-        hourlyTemps = findViewById(R.id.hourly);
-        */
+//        oldDate = findViewById(R.id.oldTemp);
+//        weeklyAve = findViewById(R.id.dailyAve);
+//        averages = findViewById(R.id.averages);
+//        jsonTextView = findViewById(R.id.text_result);
+//        hourlyTemps = findViewById(R.id.hourly);
         Log.i("TEST", "ABOUT TO GET LOCATION");
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
