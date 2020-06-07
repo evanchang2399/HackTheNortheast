@@ -69,6 +69,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 userTempLow = Double.parseDouble(extras.get("tempLowKey").toString());
                 userTempHigh = Double.parseDouble(extras.get("tempHighKey").toString());
                 userPrefTime = Integer.parseInt(extras.get("prefTimeKey").toString());
+
                 //Test
             }
         }catch(Exception e){

@@ -75,7 +75,6 @@ public class HomeActivity extends AppCompatActivity {
                     spinnerInput = mySpinner.getSelectedItem().toString();
                     convertToInt(); //Converts spinner value to -1,0, or 1
                     moveToScheduleActivity(); //Method at the bottom of all the Evan stuff
-                    Toast.makeText(HomeActivity.this, String.valueOf(prefTime), Toast.LENGTH_SHORT).show();
 
                 }catch (NumberFormatException en){ //No numbers filled out
                     Toast.makeText(HomeActivity.this, "Please fill out your preferences", Toast.LENGTH_SHORT).show();
