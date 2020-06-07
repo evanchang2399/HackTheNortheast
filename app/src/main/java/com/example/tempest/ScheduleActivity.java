@@ -137,11 +137,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 }
 
                 forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/" + latitude + "," + longitude;
-                //forecastURL = "https://api.myjson.com/bins/kp9wz";
                 Log.i("URL", forecastURL);
-
-
-                //forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/39.0840,-77.1528";
 
                 jResponse = "empty";
 
