@@ -35,6 +35,7 @@ import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
     double userTempLow ,userTempHigh;
+    int userPrefTime;
     Button goBackButton;
     //Evan stuff \/
     Double latitude;
@@ -67,6 +68,7 @@ public class ScheduleActivity extends AppCompatActivity {
             if (extras != null) {
                 userTempLow = Double.parseDouble(extras.get("tempLowKey").toString());
                 userTempHigh = Double.parseDouble(extras.get("tempHighKey").toString());
+                userPrefTime = Integer.parseInt(extras.get("prefTimeKey").toString());
                 //Test
             }
         }catch(Exception e){
