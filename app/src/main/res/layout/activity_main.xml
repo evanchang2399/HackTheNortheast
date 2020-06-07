@@ -15,11 +15,12 @@
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="63dp"
+            android:layout_marginTop="132dp"
+            android:background="@color/colorGradient4"
             android:text="RUN!"
             android:textColor="@color/colorGradient5"
-            android:background="@color/colorGradient4"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputTempLow" />
 
@@ -73,6 +74,19 @@
             app:layout_constraintStart_toStartOf="@+id/inputTempHigh" />
 
         <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="200dp"
+            android:layout_marginBottom="7dp"
+            android:text="@string/max_temp"
+            android:textColor="@color/colorGradient5"
+            app:layout_constraintBottom_toTopOf="@+id/dropDownTime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputTempLow" />
+
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,5 +97,17 @@
             android:textColor="@color/colorGradient5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/dropDownTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="308dp"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/colorGradient5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
