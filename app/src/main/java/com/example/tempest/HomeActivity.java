@@ -93,13 +93,15 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("prefTimeKey", prefTime);
         startActivity(intent);
     }
-    //Converts input, morning, evening or anytime into -1, 0 or 1... just for funsies
-    private void convertToInt(){
-        if (spinnerInput.equals("Morning")) {
+    //Converts input, morning, evening or anytime into -1, 0, 1, 2... just for funsies
+    private void convertToInt() {
+        if (spinnerInput.equals("Morning (5:00 - 11:59)")) {
             prefTime = -1;
-        }else if(spinnerInput.equals("Evening")){
+        } else if (spinnerInput.equals("Afternoon (12:00 - 15:59)")) {
             prefTime = 1;
-        }else { //Both/anytime
+        }else if(spinnerInput.equals("Evening (16:00 - 22:00)")){
+            prefTime = 2;
+        }else { //Anytime
             prefTime = 0;
         }
     }

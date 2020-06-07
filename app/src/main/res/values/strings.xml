@@ -23,12 +23,13 @@
     <string name="day_five">Day Five</string>
     <string name="day_six">Day Six</string>
     <string name="day_seven">Day Seven</string>
+    <string name="pefered_time">Pefered Times</string>
     <!-- Drop Down -->
     <string-array name="prefered_times">
         <item>Any Time</item>
-        <item>Morning</item>
-        <item>Evening</item>
-
+        <item>Morning (5:00 - 11:59)</item>
+        <item>Afternoon (12:00 - 15:59)</item>
+        <item>Evening (16:00 - 22:00)</item>
     </string-array>
 
 
