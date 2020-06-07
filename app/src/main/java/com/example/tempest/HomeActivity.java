@@ -1,3 +1,5 @@
+//Java file that corresponds with the input activity page
+
 package com.example.tempest;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HomeActivity extends AppCompatActivity {
+
+    //Pages for
     double userTempLow, userTempHigh;
     int prefTime;
     String spinnerInput;
@@ -73,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                     userTempLow = Integer.valueOf(inputTempLow.getText().toString());
                     userTempHigh = Integer.valueOf(inputTempHigh.getText().toString());
                     spinnerInput = mySpinner.getSelectedItem().toString();
-                    convertToInt(); //Converts spinner value to -1,0, or 1
+                    convertToInt(); //Converts spinner value to -1,0, 1, or 2
                     moveToScheduleActivity(); //Method at the bottom of all the Evan stuff
 
                 }catch (NumberFormatException en){ //No numbers filled out

@@ -1,3 +1,5 @@
+//Java class responsible for handling
+
 package com.example.tempest;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,10 +36,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ScheduleActivity extends AppCompatActivity {
+    //Set up variables used to parse JSON objects and textview on XML
     double userTempLow ,userTempHigh;
     int userPrefTime;
     Button goBackButton;
-    //Evan stuff \/
     Double latitude;
     Double longitude;
     String jResponse;
@@ -45,40 +47,39 @@ public class ScheduleActivity extends AppCompatActivity {
     JSONObject currently;
     JSONObject hourly;
 
-    String currentInfo;
     String[] hourTemps, hourHumidities, hourPrecips, hourWinds, dailyHighs, dailyLows, dailyPrecip;
     String[] dailyHumidities, dailyHighTimes, dailyLowTimes;
     int[] hourTimes, hourUVs;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
     private ArrayList<Integer> indexes;
-
     JSONObject nextWeek;
 
-    ArrayList<String> jsonString;
     private FusedLocationProviderClient fusedLocationProviderClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+
+        //Get user input from a previous screen
         try {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
                 userTempLow = Double.parseDouble(extras.get("tempLowKey").toString());
                 userTempHigh = Double.parseDouble(extras.get("tempHighKey").toString());
                 userPrefTime = Integer.parseInt(extras.get("prefTimeKey").toString());
-
-                //Test
             }
         }catch(Exception e){
             Toast.makeText(ScheduleActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
         goBackButton = (Button) findViewById(R.id.goBackBtn);
         goBackButton.setOnClickListener(new View.OnClickListener(){
+            //Return back to previous page upon button press
             @Override
             public void onClick(View v){
                 try {
-                    moveToHomeActivity(); //Method at the bottom of all the Evan stuff
+                    moveToHomeActivity();
                 }
                 catch(Exception e){
                     Toast.makeText(ScheduleActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -116,31 +117,23 @@ public class ScheduleActivity extends AppCompatActivity {
 
         dailyList.setAdapter(adapter);
 
-//        oldDate = findViewById(R.id.oldTemp);
-//        weeklyAve = findViewById(R.id.dailyAve);
-//        averages = findViewById(R.id.averages);
-//        jsonTextView = findViewById(R.id.text_result);
-//        hourlyTemps = findViewById(R.id.hourly);
-        Log.i("TEST", "ABOUT TO GET LOCATION");
+        //Upon getting users location, do this:
         fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
 
-                Log.i("SUCCESS", "WE made it boys");
                 if (location != null) {
-                    Log.i("event", "" + location.getLatitude());
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
-                    Log.i("location", "latitude is " + latitude + " long is " + longitude);
                 } else {
                     Log.i("event", "Error getting location");
                 }
 
+                //Create URL for API call
                 forecastURL = "https://api.darksky.net/forecast/45b937115ee9a714334343756da12736/" + latitude + "," + longitude;
-                Log.i("URL", forecastURL);
-
                 jResponse = "empty";
 
+                //Build client to access data
                 OkHttpClient client = new OkHttpClient.Builder().build();
                 Log.i("event", forecastURL);
                 Request request = new Request.Builder()
@@ -158,6 +151,7 @@ public class ScheduleActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    //When data is received, act accordingly
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         Log.i("event", "on response");
@@ -169,7 +163,7 @@ public class ScheduleActivity extends AppCompatActivity {
                             Log.i("event", "Something went wrong");
                         }
 
-
+                        //Access today's info
                         try {
                             JSONObject jobj = new JSONObject(jResponse);
                             currently = jobj.getJSONObject("currently");
@@ -248,11 +242,12 @@ public class ScheduleActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                            convertToHour(dailyHighTimes[0]);
+
+                            //Set all text in screen to display to user
                             ScheduleActivity.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    // next thing you have to do is check if your adapter has changed
+
                                     adapter.addAll(arrayList);
                                     adapter.notifyDataSetChanged();
                                     String text = "High of " + dailyHighs[0] + " at " + convertToHour(dailyHighTimes[0]) + ":00, Low: " + dailyLows[0] + " at " + convertToHour(dailyLowTimes[0]) + ":00. ";
@@ -363,6 +358,7 @@ public class ScheduleActivity extends AppCompatActivity {
         });
     }
 
+    //Helper to convert a Unix time stamp to a hour of the day
     private int convertToHour(String unixTime){
         long unix = Long.parseLong(unixTime);
         DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -373,6 +369,7 @@ public class ScheduleActivity extends AppCompatActivity {
         return Integer.parseInt(hour);
     }
 
+    //Move to previous activity
     private void moveToHomeActivity() {
         Intent intent = new Intent(ScheduleActivity.this, HomeActivity.class);
         startActivity(intent);

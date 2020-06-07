@@ -134,7 +134,7 @@
             <TextView
                 android:id="@+id/todayInfo"
                 android:layout_width="349dp"
-                android:layout_height="64dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
                 android:layout_gravity="center"
@@ -156,7 +156,7 @@
             <TextView
                 android:id="@+id/dayOneInfo"
                 android:layout_width="349dp"
-                android:layout_height="64dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -193,7 +193,7 @@
             <TextView
                 android:id="@+id/dayTwoInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -215,7 +215,7 @@
             <TextView
                 android:id="@+id/dayThreeInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -235,7 +235,7 @@
             <TextView
                 android:id="@+id/dayFourInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -255,7 +255,7 @@
             <TextView
                 android:id="@+id/dayFiveInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -275,7 +275,7 @@
             <TextView
                 android:id="@+id/daySixInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
@@ -295,7 +295,7 @@
             <TextView
                 android:id="@+id/daySevenInfo"
                 android:layout_width="349dp"
-                android:layout_height="51dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="36dp"
                 android:text="Gathering info"
