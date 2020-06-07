@@ -16,22 +16,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="395dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="-403dp">
 
             <Button
                 android:id="@+id/goBackBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorGradient4"
                 android:text="@string/go_back"
                 android:textAlignment="center"
-                android:textColor="@color/colorGradient5"
-                android:background="@color/colorGradient4"
-                />
+                android:textColor="@color/colorGradient5" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -49,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="46dp"
                 android:layout_marginTop="20dp"
-                android:text="Best times to run today"
+                android:text="Some viable times to run today"
                 android:textColor="@color/colorGradient5"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/message2"
@@ -60,15 +61,15 @@
                 android:layout_width="fill_parent"
                 android:layout_height="156dp"
                 android:drawSelectorOnTop="false" />
-
+<!--
             <TextView
                 android:id="@+id/message2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/message_two"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/message3"
                 app:layout_constraintTop_toBottomOf="@+id/message3" />
 
@@ -78,8 +79,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/message_three"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/tempTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tempTitle" />
 
@@ -90,8 +91,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="64dp"
                 android:text="Temperature"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/currentTemp"
                 app:layout_constraintTop_toBottomOf="@+id/currentTemp" />
 
@@ -101,8 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/current_temp"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@+id/humidTitle"
                 app:layout_constraintTop_toBottomOf="@+id/humidTitle" />
 
@@ -112,8 +113,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:text="Humidity"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/currentHumid"
                 app:layout_constraintTop_toBottomOf="@+id/currentHumid" />
 
@@ -123,44 +124,45 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/current_humidity"
-                android:textSize="24sp"
                 android:textColor="@color/colorGradient5"
-                app:layout_constraintStart_toEndOf="@+id/precipitationTitle"
-                app:layout_constraintTop_toBottomOf="@+id/precipitationTitle" />
-
-            <TextView
-                android:id="@+id/precipitationTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="Precipitation"
                 android:textSize="24sp"
-                android:textColor="@color/colorGradient5"
-                app:layout_constraintEnd_toStartOf="@+id/currentPrecipitation" />
 
-
-            <TextView
-                android:id="@+id/currentPrecipitation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/current_precipitation"
-                android:textSize="24sp"
-                android:textColor="@color/colorGradient5"
-                app:layout_constraintStart_toStartOf="@+id/dayOne"
-                app:layout_constraintTop_toBottomOf="@+id/dayOne" />
-
-
+                />
+-->
             <TextView
                 android:id="@+id/dayOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="68dp"
                 android:text="@string/day_one"
-                android:textSize="36sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="36sp"
                 app:layout_constraintStart_toStartOf="@+id/dayTwo"
                 app:layout_constraintTop_toBottomOf="@+id/dayTwo" />
+
+            <TextView
+                android:id="@+id/dayOneInfo"
+                android:layout_width="349dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
+
+
+            <!--
+            <TextView
+                android:id="@+id/currentPrecipitation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/current_precipitation"
+                android:textColor="@color/colorGradient5"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/dayOne"
+                app:layout_constraintTop_toBottomOf="@+id/dayOne" />
+-->
+
 
             <TextView
                 android:id="@+id/dayTwo"
@@ -168,10 +170,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="68dp"
                 android:text="@string/day_two"
-                android:textSize="36sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="36sp"
                 app:layout_constraintStart_toStartOf="@+id/dayThree"
                 app:layout_constraintTop_toBottomOf="@+id/dayThree" />
+
+            <TextView
+                android:id="@+id/dayTwoInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/dayThree"
@@ -179,11 +190,91 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="68dp"
                 android:text="@string/day_three"
-                android:textSize="36sp"
                 android:textColor="@color/colorGradient5"
+                android:textSize="36sp"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
 
+            <TextView
+                android:id="@+id/dayThreeInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/dayFour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:text="Day Four"
+                android:textColor="@color/colorGradient5"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/dayFourInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/dayFive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:text="Day Five"
+                android:textColor="@color/colorGradient5"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/dayFiveInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/daySix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:text="Day Six"
+                android:textColor="@color/colorGradient5"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/daySixInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/daySeven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:text="Day Seven"
+                android:textColor="@color/colorGradient5"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/daySevenInfo"
+                android:layout_width="349dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="36dp"
+                android:text="Gathering info"
+                android:textColor="@color/colorGradient5"
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 

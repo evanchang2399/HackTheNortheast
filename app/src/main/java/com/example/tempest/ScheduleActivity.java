@@ -87,16 +87,26 @@ public class ScheduleActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        final TextView jsonTextView;
-        final TextView hourlyTemps;
-        final TextView averages;
-        final TextView weeklyAve;
-        final TextView oldDate;
-        final TextView testBox;
+        final TextView dayOneInfo;
+        final TextView dayTwoInfo;
+        final TextView dayThreeInfo;
+        final TextView dayFourInfo;
+        final TextView dayFiveInfo;
+        final TextView daySixInfo;
+        final TextView daySevenInfo;
+
         final ListView dailyList;
 
-        testBox = findViewById(R.id.message1);
         dailyList = findViewById(R.id.dailyList);
+
+        dayOneInfo = findViewById(R.id.dayOneInfo);
+        dayTwoInfo = findViewById(R.id.dayTwoInfo);
+        dayThreeInfo = findViewById(R.id.dayThreeInfo);
+        dayFourInfo = findViewById(R.id.dayFourInfo);
+        dayFiveInfo = findViewById(R.id.dayFiveInfo);
+        daySixInfo = findViewById(R.id.daySixInfo);
+        daySevenInfo = findViewById(R.id.daySevenInfo);
+
 
         arrayList = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
@@ -249,8 +259,33 @@ public class ScheduleActivity extends AppCompatActivity {
                                     // next thing you have to do is check if your adapter has changed
                                     adapter.addAll(arrayList);
                                     adapter.notifyDataSetChanged();
-                                    //adapter.notifyDataSetChanged();
+                                    String text ="High of "+ dailyHighs[0] + " at "+convertToHour(dailyHighTimes[0])+":00, Low: " + dailyLows[0]+" at " +convertToHour(dailyLowTimes[0])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[0] +" and a humidity of " + dailyHumidities[0];
+                                    dayOneInfo.setText(text);
 
+                                    text ="High of "+ dailyHighs[1] + " at "+convertToHour(dailyHighTimes[1])+":00, Low: " + dailyLows[1]+" at " +convertToHour(dailyLowTimes[1])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[1] +" and a humidity of " + dailyHumidities[1];
+                                    dayTwoInfo.setText(text);
+
+                                    text ="High of "+ dailyHighs[2] + " at "+convertToHour(dailyHighTimes[2])+":00, Low: " + dailyLows[2]+" at " +convertToHour(dailyLowTimes[2])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[2] +" and a humidity of " + dailyHumidities[2];
+                                    dayThreeInfo.setText(text);
+
+                                    text ="High of "+ dailyHighs[3] + " at "+convertToHour(dailyHighTimes[3])+":00, Low: " + dailyLows[3]+" at " +convertToHour(dailyLowTimes[3])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[3] +" and a humidity of " + dailyHumidities[3];
+                                    dayFourInfo.setText(text);
+
+                                    text ="High of "+ dailyHighs[4] + " at "+convertToHour(dailyHighTimes[4])+":00, Low: " + dailyLows[4]+" at " +convertToHour(dailyLowTimes[4])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[4] +" and a humidity of " + dailyHumidities[4];
+                                    dayFiveInfo.setText(text);
+
+                                    text ="High of "+ dailyHighs[5] + " at "+convertToHour(dailyHighTimes[5])+":00, Low: " + dailyLows[5]+" at " +convertToHour(dailyLowTimes[5])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[5] +" and a humidity of " + dailyHumidities[5];
+                                    daySixInfo.setText(text);
+
+                                    text ="High of "+ dailyHighs[6] + " at "+convertToHour(dailyHighTimes[6])+":00, Low: " + dailyLows[6]+" at " +convertToHour(dailyLowTimes[6])+":00. ";
+                                    text += "Precipitation chance of " + dailyPrecip[6] +" and a humidity of " + dailyHumidities[6];
+                                    daySevenInfo.setText(text);
                                 }
                             });} catch (JSONException e) {
                             e.printStackTrace();
