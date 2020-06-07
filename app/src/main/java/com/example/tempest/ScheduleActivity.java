@@ -217,7 +217,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
                             for(int i = 0; i < 24; i ++){
                                 double curHourTemp = Double.parseDouble(hourTemps[i]);
-                                if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh){
+                                if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh && (hourTimes[i]>5 && hourTimes[i]<21)){
                                     arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV: " + hourUVs[i]+", precip chance: " + hourPrecips[i].toString());
 
                                 }
@@ -286,6 +286,7 @@ public class ScheduleActivity extends AppCompatActivity {
                                     text ="High of "+ dailyHighs[6] + " at "+convertToHour(dailyHighTimes[6])+":00, Low: " + dailyLows[6]+" at " +convertToHour(dailyLowTimes[6])+":00. ";
                                     text += "Precipitation chance of " + dailyPrecip[6] +" and a humidity of " + dailyHumidities[6];
                                     daySevenInfo.setText(text);
+
                                 }
                             });} catch (JSONException e) {
                             e.printStackTrace();

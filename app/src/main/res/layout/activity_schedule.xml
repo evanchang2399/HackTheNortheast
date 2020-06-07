@@ -52,9 +52,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Some viable times to run today"
                 android:textColor="@color/colorGradient5"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/message2"
-                app:layout_constraintTop_toBottomOf="@+id/message2" />
+                android:textSize="24sp" />
 
             <ListView
                 android:id="@+id/dailyList"
