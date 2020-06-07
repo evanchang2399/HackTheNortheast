@@ -208,7 +208,7 @@ public class ScheduleActivity extends AppCompatActivity {
                             for(int i = 0; i < 24; i ++){
                                 double curHourTemp = Double.parseDouble(hourTemps[i]);
                                 if(curHourTemp >= userTempLow && curHourTemp <= userTempHigh){
-                                    arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV index of " + hourUVs+", with a " + hourPrecips.toString()+ " chance of precipitation");
+                                    arrayList.add(hourTimes[i] + ":00 - " + hourTemps[i] + " degrees, UV index of " + hourUVs[i]+", with a " + hourPrecips[i].toString()+ " chance of precipitation");
 
                                 }
                             }

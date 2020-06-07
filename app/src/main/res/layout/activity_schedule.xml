@@ -58,9 +58,8 @@
             <ListView
                 android:id="@+id/dailyList"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:drawSelectorOnTop="false"
-                />
+                android:layout_height="156dp"
+                android:drawSelectorOnTop="false" />
 
             <TextView
                 android:id="@+id/message2"
