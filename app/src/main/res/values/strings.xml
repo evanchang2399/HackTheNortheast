@@ -23,7 +23,7 @@
     <string name="day_five">Day Five</string>
     <string name="day_six">Day Six</string>
     <string name="day_seven">Day Seven</string>
-    <string name="pefered_time">Pefered Times</string>
+    <string name="preferred_time">Pefered Times</string>
     <string name="logo_desc">Logo</string>
     <!-- Drop Down -->
     <string-array name="prefered_times">
